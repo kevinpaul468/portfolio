@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Certificate {
-  final Image certificate ;
-  final String title , description;
-  Certificate({required this.title , required this.description, required this.certificate});
+  final String title , description,imagePath ;
+  Certificate({required this.title , required this.description, required this.imagePath});
 }
 
 List <Certificate> certificates = [
-  Certificate(title: "GCCF", description: "Certification of successfully completing google cloud computing foundations", certificate: Image.asset(".")),
-  Certificate(title: "Coders Clash", description: "certificate of participation in Coders Clash contest", certificate: Image.asset("."))
+  Certificate(title: "Solution challenge", description: "Certification of getting into top 30 teams in internal solution challenge", imagePath: "assets/images/solution_challenge.png"),
+  Certificate(title: "Coders Clash", description: "certificate of participation in Coders Clash contest", imagePath: "assets/images/coders_clash.jpeg"),
 ];

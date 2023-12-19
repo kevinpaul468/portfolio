@@ -154,11 +154,11 @@ class Certificates extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(certificates[index].title, overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white,), maxLines: 2,),
-                  Spacer(),
-                  Image.asset("assets/images/certificate$index"),
-                  Spacer(),
+                  // Spacer(),
+                  Flexible(child: Image.asset(certificates[index].imagePath, fit: BoxFit.contain,)),
+                  // Spacer(),
                   Text(certificates[index].description,maxLines: 4,overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white),),
-                  Spacer(),
+                  // Spacer(),
                   TextButton(onPressed: (){}, child: Text("Read More>>",style: TextStyle(color: primaryColor),))
                 ],
               ),

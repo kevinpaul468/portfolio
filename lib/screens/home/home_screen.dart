@@ -4,9 +4,8 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/models/certificates.dart';
 import 'package:portfolio/models/projects.dart';
 import 'package:portfolio/screens/main/main_screen.dart';
-
 import '../main/responsive.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -88,6 +87,16 @@ class ProjectsList extends StatelessWidget {
   const ProjectsList({super.key, this.crossAxisCount = 3 , this.childAspectRatio = 1.3});
   final int crossAxisCount;
   final double childAspectRatio;
+
+  Future<void> _launchURL(url) async {
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw ("Could not launch $url");
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -116,7 +125,9 @@ class ProjectsList extends StatelessWidget {
                   Spacer(),
                   Text(projects[index].description, style: TextStyle(color: Colors.white),maxLines: 5, overflow: TextOverflow.ellipsis,),
                   Spacer(),
-                  TextButton(onPressed: (){}, child: Text("Read More>>", style: TextStyle(color: primaryColor),),)
+                  TextButton(onPressed: (){
+                    _launchURL(Uri.parse(projects[index].githubLink));
+                  }, child: Text("Read More>>", style: TextStyle(color: primaryColor),),)
                 ],
               ),
             )
